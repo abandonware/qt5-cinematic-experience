@@ -127,8 +127,8 @@ Item {
             Switch {
                 text: "Do you l-o-v-e colors?"
                 checked: settings.showColors
-                onText: "Yes"
-                offText: "No!"
+                textOn: "Yes"
+                textOff: "No!"
                 onCheckedChanged: {
                     settings.showColors = checked;
                 }

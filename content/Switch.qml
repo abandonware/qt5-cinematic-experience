@@ -6,8 +6,8 @@ Item {
 
     property alias text: textItem.text
     property bool checked: false
-    property string onText: "On"
-    property string offText: "Off"
+    property string textOn: "On"
+    property string textOff: "Off"
 
     QtObject {
         id: priv
@@ -120,7 +120,7 @@ Item {
             color: "#000000"
             font.pixelSize: 18
             font.bold: true
-            text: onText
+            text: textOn
         }
         Text {
             anchors.verticalCenter: parent.verticalCenter
@@ -129,7 +129,7 @@ Item {
             color: "#ffffff"
             font.pixelSize: 18
             font.bold: true
-            text: offText
+            text: textOff
         }
 
         Image {
