@@ -1,0 +1,7 @@
+Makefile
+Qt5_CinematicExperience
+main.o
+debian/*/*
+debian/*.log
+debian/files
+packaging/*/*
