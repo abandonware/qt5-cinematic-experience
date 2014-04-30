@@ -1,0 +1,5 @@
+qt5-cinematic-experience (1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Philippe Coval <rzr@gna.org>  Wed, 30 Apr 2014 21:05:39 +0200
