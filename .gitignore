@@ -5,3 +5,7 @@ debian/*/*
 debian/*.log
 debian/files
 packaging/*/*
+*~
+debian/*.log
+debian/*.substvars
+debian/files
