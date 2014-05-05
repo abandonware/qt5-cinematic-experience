@@ -5,7 +5,7 @@ License:        Multiple/CC-BY-3.0,...
 Summary:        UX demo application using Qt5
 Url:            http://quitcoding.com/?page=work
 Group:          System/Libraries
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}_%{version}.orig.tar.gz
 
 BuildRequires:  make
 BuildRequires:  qt5-qmake
