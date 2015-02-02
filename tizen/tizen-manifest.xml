@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="2.3" package="org.qtproject.example.Qt5_CinematicExperience" version="1.0.0">
+    <profile name="mobile" />
+    <ui-application appid="org.qtproject.example.Qt5_CinematicExperience" exec="Qt5_CinematicExperience" type="capp" multiple="false" taskmanage="true" nodisplay="false">
+        <icon>Qt5_CinematicExperience.png</icon>
+        <label>Qt Cinematic</label>
+    </ui-application>
+    <feature>http://tizen.org/feature/screen.size.all</feature>
+</manifest>
+

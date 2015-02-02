@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Qt5_CinematicExperience.qml</file>
+        <file>content/Background.qml</file>
+        <file>content/Button.qml</file>
+        <file>content/CurtainEffect.qml</file>
+        <file>content/DelegateItem.qml</file>
+        <file>content/DetailsView.qml</file>
+        <file>content/FpsItem.qml</file>
+        <file>content/InfoView.qml</file>
+        <file>content/InfoViewItem.qml</file>
+        <file>content/MainView.qml</file>
+        <file>content/MoviesModel.qml</file>
+        <file>content/RatingsItem.qml</file>
+        <file>content/SettingsView.qml</file>
+        <file>content/Switch.qml</file>
+    </qresource>
+</RCC>
