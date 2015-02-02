@@ -10,7 +10,6 @@ ShaderEffect {
     property real originalWidth: width
     property real amplitude: 0.10
 
-    anchors.fill: parent
     mesh: Qt.size(1, 80)
 
     vertexShader: "

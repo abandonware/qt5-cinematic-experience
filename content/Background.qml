@@ -33,7 +33,7 @@ Rectangle {
             anchors.fill: parent
             emitRate: 4
             lifeSpan: 5000
-            size: 32
+            size: 48
             sizeVariation: 16
         }
     }

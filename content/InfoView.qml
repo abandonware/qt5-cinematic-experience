@@ -19,7 +19,8 @@ Item {
 
     function show() {
         priv.showingStarted = true;
-        isShown = true;
+        // Disabled, so animations continue while infoview is on
+        //isShown = true;
         hideCurtainAnimation.stop();
         hidePoleAnimation.stop();
         if (priv.poleOut) {
@@ -79,7 +80,7 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        enabled: root.isShown
+        enabled: priv.poleOut
         onClicked: {
             root.hide();
         }
@@ -115,7 +116,7 @@ Item {
         width: Math.min(620, parent.width)
         height: parent.height + priv.endCurly - 16
         y: 8
-        visible: isShown
+        visible: priv.poleOut
 
         Rectangle {
             id: backgroundItem
@@ -145,14 +146,14 @@ Item {
                 width: parent.width
                 spacing: 32
 
-                Text {
+                Item {
+                    width: parent.width
+                    height: 8
+                }
+                Image {
                     id: textItem
-                    x: 32
-                    height: 60
-                    color: "#ffffff"
-                    font.pixelSize: settings.fontMM
-                    text: "<i>The Cinematic Experience</i>"
-                    verticalAlignment: Text.AlignBottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    source: "images/heading.png"
                 }
 
                 InfoViewItem {

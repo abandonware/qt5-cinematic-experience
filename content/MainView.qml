@@ -60,24 +60,6 @@ Item {
         }
 
         Text {
-            id: headingText
-            anchors.top: parent.top
-            anchors.topMargin: 30
-            anchors.horizontalCenter: parent.horizontalCenter
-            horizontalAlignment: Text.AlignHCenter
-            width: 400
-            text: "My Movies\nTop 20"
-            style: Text.Outline
-            styleColor: "#b0a030"
-            color: "#d9cf9e"
-            font.pixelSize: settings.fontL
-            opacity: listView.atYBeginning
-            Behavior on opacity {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutQuad }
-            }
-        }
-
-        Text {
             id: titleText
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: -40
@@ -87,38 +69,27 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             text: listView.currentIndex+1 + ". " + listView.currentItem.name
             color: "#ffffff"
+            style: Text.Outline
+            styleColor: "#b0a030"
             font.pixelSize: settings.fontL
-            // Note: DropShadow contains original source also so this can be hidden
-            visible: false
             Behavior on text {
                 SequentialAnimation {
                     ParallelAnimation {
-                        NumberAnimation { target: titleTextEffect; property: "opacity"; duration: 100; to: 0; easing.type: Easing.InOutQuad }
-                        NumberAnimation { target: titleTextEffect; property: "scale"; duration: 100; to: 0.6; easing.type: Easing.InOutQuad }
+                        NumberAnimation { target: titleText; property: "opacity"; duration: 100; to: 0; easing.type: Easing.InOutQuad }
+                        NumberAnimation { target: titleText; property: "scale"; duration: 100; to: 0.6; easing.type: Easing.InOutQuad }
                     }
                     PropertyAction { target: titleText; property: "text" }
                     ParallelAnimation {
-                        NumberAnimation { target: titleTextEffect; property: "opacity"; duration: 100; to: 1; easing.type: Easing.InOutQuad }
-                        NumberAnimation { target: titleTextEffect; property: "scale"; duration: 100; to: 1; easing.type: Easing.InOutQuad }
+                        NumberAnimation { target: titleText; property: "opacity"; duration: 100; to: 1; easing.type: Easing.InOutQuad }
+                        NumberAnimation { target: titleText; property: "scale"; duration: 100; to: 1; easing.type: Easing.InOutQuad }
                     }
                 }
             }
         }
-        // TODO: Check, does Dropshadow slowdown notably, does it render when text change animates?
-        DropShadow {
-            id: titleTextEffect
-            anchors.fill: titleText
-            horizontalOffset: 2
-            verticalOffset: 2
-            radius: 12.0
-            samples: 16
-            color: "#000000"
-            source: titleText
-        }
 
         Image {
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 16
+            anchors.bottomMargin: 32
             anchors.horizontalCenter: parent.horizontalCenter
             source: "images/qt_logo.png"
             opacity: listView.atYEnd
@@ -130,10 +101,10 @@ Item {
         // Shooting star + animation + particles
         AnimatedSprite {
             id: lightImage
-            width: 64
-            height: 64
-            frameWidth: 64
-            frameHeight: 64
+            width: 128
+            height: 128
+            frameWidth: 128
+            frameHeight: 128
             frameCount: 16
             frameRate: 15
             source: "images/planet_sprite.png"
@@ -180,8 +151,8 @@ Item {
                 y: lightImage.y + lightImage.height/2
                 velocity: PointDirection {xVariation: 8; yVariation: 8;}
                 acceleration: PointDirection {xVariation: 12; yVariation: 12;}
-                size: 16
-                sizeVariation: 8
+                size: 32
+                sizeVariation: 16
             }
             Emitter {
                 id: shootingStarBurst
@@ -201,33 +172,33 @@ Item {
                 source: "images/smoke.png"
                 color: "#ffffff"
                 alpha: 0.9
-                opacity: 0.5
-                colorVariation: settings.showColors ? 0.5 : 0.0
+                opacity: 0.8
+                colorVariation: settings.showColors ? 0.9 : 0.0
                 rotationVariation: 180
             }
             Emitter {
-                y: root.height * 0.8
+                y: root.height * 0.85
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: 200 + parent.width * 0.3
+                width: 200 + parent.width * 0.1
                 height: root.height * 0.3
-                emitRate: settings.showFogParticles ? 20 : 0
-                lifeSpan: 3000
+                emitRate: settings.showFogParticles ? 8 : 0
+                lifeSpan: 2000
                 lifeSpanVariation: 1000
                 group: "smoke"
-                size: 256
-                sizeVariation: 128
+                size: 192
+                sizeVariation: 64
                 acceleration: PointDirection { y: -80; xVariation: 20 }
             }
             Emitter {
                 y: root.height * 0.9
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: 200 + parent.width * 0.2
+                width: 200 + parent.width * 0.1
                 height: root.height * 0.2
-                emitRate: settings.showFogParticles ? 30 : 0
+                emitRate: settings.showFogParticles ? 10 : 0
                 lifeSpan: 2000
                 group: "smoke"
-                size: 256
-                sizeVariation: 128
+                size: 192
+                sizeVariation: 64
                 acceleration: PointDirection { y: -20; xVariation: 40 }
             }
             Turbulence {

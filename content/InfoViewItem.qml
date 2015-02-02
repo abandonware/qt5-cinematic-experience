@@ -22,6 +22,8 @@ Item {
         x: root.switchedLayout ? parent.width - width - 16 : 16
         y: 8
         color: "#ffffff"
+        style: Text.Raised
+        styleColor: "#000000"
         font.pixelSize: settings.fontS
         wrapMode: Text.WordWrap
     }

@@ -10,13 +10,17 @@ Item {
     height: imageItem.height
     z: isSelected ? 1000 : -index
     rotation: isSelected ? 0 : -15
-    scale: isSelected ? 1.5 : 0.8
+    scale: isSelected ? mainView.height/540 : mainView.height/1080
+    opacity: 1.0 - Math.abs((listView.currentIndex - index) * 0.25)
 
     Behavior on rotation {
         NumberAnimation { duration: 500; easing.type: Easing.OutBack }
     }
     Behavior on scale {
-        NumberAnimation { duration: 1000; easing.type: Easing.OutElastic }
+        NumberAnimation { duration: 1500; easing.type: Easing.OutElastic }
+    }
+    Behavior on opacity {
+        NumberAnimation { duration: 200; easing.type: Easing.OutQuad }
     }
 
     MouseArea {
@@ -75,11 +79,11 @@ Item {
                 highp vec4 pix = texture2D(src, qt_TexCoord0.st);
                 highp vec4 pix2 = texture2D(srcNmap, qt_TexCoord0.st);
                 highp vec3 normal = normalize(pix2.rgb * 2.0 - 1.0);
-                highp vec3 light_pos = normalize(vec3(qt_TexCoord0.x - lightPosX, qt_TexCoord0.y - lightPosY, 0.6 ));
-                highp float diffuse = max(dot(normal, light_pos), 0.4);
+                highp vec3 light_pos = normalize(vec3(qt_TexCoord0.x - lightPosX, qt_TexCoord0.y - lightPosY, 0.8 ));
+                highp float diffuse = max(dot(normal, light_pos), 0.2);
 
                 // boost a bit
-                diffuse *= 1.8;
+                diffuse *= 2.5;
 
                 highp vec3 color = diffuse * pix.rgb;
                 gl_FragColor = vec4(color, pix.a) * qt_Opacity;
